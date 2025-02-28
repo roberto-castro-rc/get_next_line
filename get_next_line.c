@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-char *ft_strrchr(const char *s, int c);
+char *gnl_strchr(char *s, int c);
 char *get_next_line(int fd)
 {
 	static char *backup;
@@ -20,54 +20,29 @@ char *get_next_line(int fd)
 
 	bytes_read = read(fd, buf, BUFFER_SIZE);
 
-	if(ft_strrchr(buf, '\n'))
+	if(gnl_strchr(buf, '\n'))
 	{
-		temp = ft_strrchr(buf, '\n');
-
-		buf[temp + 1] = '\0';
 		return (buf);
 	}
 
 	return NULL;
 }
-size_t	ft_strlen(const char *s)
-{
-	size_t	count;
 
-	count = 0;
-	while(s[count] != '\0')
+char	*gnl_strchr(char *s, int c)
+{	int i;
+	if(!s)
 	{
-		count++;
+		return NULL;
 	}
-
-	return count;
-}
-
-char *ft_strrchr(const char *s, int c)
-{
-	int i;
-
- i = ft_strlen(s);
- if ((unsigned char)c == '\0')
- {
-	 return ((char *)(s + i));
- }
- while (i >= 0)
- {
-	 if (s[i] == (unsigned char)c)
-	 {
-		 return ((char *)(s + i));
-	 }
-	 i--;
- }
-
- return NULL;
-}
-
-
-char *get_line(int fd)
-{
-	// Your implementation here
+	i = 0;
+	while(s[i] != '\0')
+	{
+		if (s[i] == (unsigned char)c)
+		{
+			return (&s[i]);
+		}
+		i++;
+	}
 	return NULL;
 }
 
@@ -78,8 +53,9 @@ int	main(void)
 
 	int fd = open("test.txt", O_RDONLY);
 	char *line;
-	printf("%s\n", get_next_line(fd));
+	printf("%s\n", NULL);
 
 	close(fd);
 	return (0);
 }
+
