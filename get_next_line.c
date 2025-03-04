@@ -1,7 +1,7 @@
 #include "get_next_line.h"
 
 char	*gnl_strchr(char *s, int c);
-char	*gnl_strjoin(const char *s1, const char *s2);
+char	*gnl_strjoin(char *s1, char *s2);
 char	*gnl_strdup(const char *s1);
 char	*get_next_line(int fd)
 {
@@ -53,34 +53,42 @@ int	gnl_strlen(const char *s)
 	}
 	return i;
 }
-char	*gnl_strjoin(const char *s1, const char *s2)
+
+char	*gnl_strjoin(char *s1, char *s2)
 {
 	char	*newstr;
-	size_t	i;
+	int		i;
+	int		j;
 
 	if (!s1)
-	{
-		s1 = gnl_strdup("");
-	}
-
+		gnl_strdup("");
 	if (!s2)
 		return (NULL);
-	i = gnl_strlen(s1) + gnl_strlen(s2);
-	newstr = (char *)malloc(i * sizeof(char) + 1);
+	newstr = (char *)malloc((gnl_strlen(s1) + gnl_strlen(s2)) * sizeof(char) + 1);
 	if (!newstr)
 		return (NULL);
+	i = 0;
+	while (s1[i] != '0')
+	{
+		newstr[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '0')
+	{
+		newstr[i] = s2[j];
+		j++;
+		i++;
+	}
 	newstr[i] = '\0';
-	while (*s1 != '\0')
-		*newstr++ = *s1++;
-	while (*s2 != '\0')
-		*newstr++ = *s2++;
-	return (newstr - i);
+	return (newstr);
 }
 char	*gnl_strdup(const char *s1)
 {
 	char	*copy_str;
 	size_t	i;
 
+	if (!s1)
+		return (gnl_strdup(""));
 	copy_str = (char *)malloc(gnl_strlen(s1) + 1);
 	if (!copy_str)
 	{

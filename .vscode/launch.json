@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "/nfs/homes/rpaulo-c/Desktop/get_next_line/get_next_line",
-      "program": "/nfs/homes/rpaulo-c/Desktop/get_next_line/get_next_line/build/Debug/outDebug",
+      "externalConsole": true,
+      "cwd": "c:/Users/rober/Desktop/42/get_next_line/get_next_line",
+      "program": "c:/Users/rober/Desktop/42/get_next_line/get_next_line/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
