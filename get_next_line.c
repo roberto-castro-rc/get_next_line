@@ -2,53 +2,38 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-char	*gnl_strchr(char *s, int c);
-char	*gnl_strjoin(char *s1, char *s2);
-char	*gnl_strdup(const char *s1);
 char *extract_line(char *backup);
+char *clean_backup(char *backup);
 char	*get_next_line(int fd)
 {
 	static char *backup;
-	char *buf;
+	char *reading;
 	char *line;
 	int bytes_read;
 
 	if(fd < 0 || BUFFER_SIZE <= 0)
-	{
 		return NULL;
-	}
-
-	while (1)
+	reading = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if(!reading)
+		return NULL;
+	bytes_read = 1;
+	while (!gnl_strchr(backup, '\n') && bytes_read != 0)
 	{
-		buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		if(!buf)
-			return NULL;
-		bytes_read = read(fd, buf, BUFFER_SIZE);
+		bytes_read = read(fd, reading, BUFFER_SIZE);
 		if(bytes_read == -1)
 		{
-			free(buf);
+			free(reading);
 			return NULL;
 		}
-		buf[bytes_read] = '\0';
-		backup = gnl_strjoin(backup, buf);
-		free(buf);
+		reading[bytes_read] = '\0';
+		backup = gnl_strjoin(backup, reading);
 		if(!backup)
-		{
 			return NULL;
-		}
-		if(bytes_read == 0)
-		{
-			return backup;
-		}
-		line = extract_line(backup);
-		if(gnl_strchr(line, '\n'))
-		{
-			printf("found newline\n");
-			return line;
-		}
-
 	}
-	return backup;
+	line = extract_line(backup);
+	backup = clean_backup(backup);
+	free(reading);
+	return line;
 }
 char *clean_backup(char *backup)
 {
@@ -59,11 +44,19 @@ char *clean_backup(char *backup)
 	{
 		return NULL;
 	}
+	i = 0;
 	while(backup[i] != '\0' && backup[i] != '\n')
 	{
 		i++;
 	}
-	
+	if(backup[i] == '\0')
+	{
+		free(backup);
+		return NULL;
+	}
+	new_backup = gnl_strdup(&backup[i + 1]);
+	free(backup);
+	return new_backup;
 }
 char *extract_line(char *backup)
 {
@@ -103,7 +96,7 @@ char *extract_line(char *backup)
 		line[i] = backup[i];
 		i++;
 	}
-	printf("%s; %c", backup, backup[i]);
+	// printf("%s; %c", backup, backup[i]);
 	if (backup[i] == '\n')
 	{
 		line[i] = '\n';
@@ -113,98 +106,23 @@ char *extract_line(char *backup)
 }
 
 
-int	gnl_strlen(const char *s)
-{
-	int i;
 
-	i = 0;
-	if(s)
-	{
-		while(s[i] != '\0')
-		{
-			i++;
-		}
-	}
-	return i;
-}
 
-char	*gnl_strjoin(char *s1, char *s2)
-{
-	char	*newstr;
-	int		i;
-	int		j;
-
-	if (!s1)
-		s1 = gnl_strdup("");
-	if (!s2)
-		return (NULL);
-	newstr = (char *)malloc((gnl_strlen(s1) + gnl_strlen(s2)) + 1);
-	if (!newstr)
-		return (NULL);
-	i = 0;
-	while (s1[i] != '\0')
-	{
-		newstr[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j] != '\0')
-	{
-		newstr[i + j] = s2[j];
-		j++;
-	}
-	newstr[i + j] = '\0';
-	return (newstr);
-}
-char	*gnl_strdup(const char *s1)
-{
-	char	*copy_str;
-	size_t	i;
-
-	if (!s1)
-		s1 = "";
-	copy_str = (char *)malloc(gnl_strlen(s1) + 1);
-	if (!copy_str)
-	{
-		return (NULL);
-	}
-	i = 0;
-	while (s1[i])
-	{
-		copy_str[i] = s1[i];
-		i++;
-	}
-	copy_str[i] = '\0';
-	return (copy_str);
-}
-
-char	*gnl_strchr(char *s, int c)
-{	int i;
-	if(!s)
-	{
-		return NULL;
-	}
-	i = 0;
-	while(s[i] != '\0')
-	{
-		if (s[i] == (unsigned char)c)
-		{
-			return (&s[i]);
-		}
-		i++;
-	}
-	return NULL;
-}
 
 
 int	main(void)
 {
-
+	char *line;
 	int fd = open("test.txt", O_RDONLY);
 
-	printf("print main \n%s\n", get_next_line(fd));
-	printf("print 2 main \n%s\n", get_next_line(fd));
-	printf("print 3 main \n%s\n", get_next_line(fd));
+	while (line)
+	{
+		line = get_next_line(fd);
+		printf("print main \n%s", line);
+	}
+
+	printf("print 1 main \n%s", get_next_line(fd));
+
 	close(fd);
 	return (0);
 }
