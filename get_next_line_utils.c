@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-int	gnl_strlen(const char *s)
+int	gnl_strlen(char *s)
 {
 	int	i;
 
@@ -76,6 +76,7 @@ char	*gnl_strjoin(char *s1, char *s2)
 		newstr[i + j] = s2[j];
 		j++;
 	}
+	free(s1);
 	newstr[i + j] = '\0';
 	return (newstr);
 }

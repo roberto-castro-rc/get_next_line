@@ -80,7 +80,7 @@ char *extract_line(char *backup)
 		i++;
 	}
 	/*
-	if(backup[i] == '\n)
+	if(backup[i] == '\n')
 	{
 		i += 1;
 	}
@@ -96,34 +96,29 @@ char *extract_line(char *backup)
 		line[i] = backup[i];
 		i++;
 	}
-	// printf("%s; %c", backup, backup[i]);
 	if (backup[i] == '\n')
 	{
 		line[i] = '\n';
+		i++;
 	}
-	line[++i] = '\0';
+	line[i] = '\0';
 	return line;
 }
 
+// int	main(void)
+// {
+// 	char *line;
+// 	int fd = open("test.txt", O_RDONLY);
 
+// 	while (line)
+// 	{
+// 		line = get_next_line(fd);
+// 		printf("print main \n%s", line);
+// 	}
 
+// 	printf("print 1 main \n%s", get_next_line(fd));
 
-
-
-int	main(void)
-{
-	char *line;
-	int fd = open("test.txt", O_RDONLY);
-
-	while (line)
-	{
-		line = get_next_line(fd);
-		printf("print main \n%s", line);
-	}
-
-	printf("print 1 main \n%s", get_next_line(fd));
-
-	close(fd);
-	return (0);
-}
+// 	close(fd);
+// 	return (0);
+// }
 

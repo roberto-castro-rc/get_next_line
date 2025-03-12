@@ -1,0 +1,70 @@
+Script started on 2025-03-12 01:20:41-03:00 [TERM="xterm-256color" TTY="/dev/tty1" COLUMNS="99" LINES="8"]
+Already up to date.
+[34m[Mandatory]
+==1464== error calling PR_SET_PTRACER, vgdb might block
+[37m[BUFFER_SIZE = 1]: [0m
+[37mInvalid fd: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/empty: [32m1.OK [32m2.OK [0m
+[37mfiles/nl: [32m1.OK [32m2.OK [0m
+[37mfiles/41_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/41_with_nl: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/42_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/42_with_nl: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/43_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/43_with_nl: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/multiple_nlx5: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [0m
+[37mfiles/multiple_line_no_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [0m
+[37mfiles/multiple_line_with_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [0m
+[37mfiles/alternate_line_nl_no_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK [0m
+[37mfiles/alternate_line_nl_with_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK [0m
+[37mfiles/big_line_no_nl: [31mTIMEOUT[0m
+[37mfiles/big_line_with_nl: [31mTIMEOUT[0m
+[37mstdin: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK 
+==1496== error calling PR_SET_PTRACER, vgdb might block
+[37m[BUFFER_SIZE = 42]: [0m
+[37mInvalid fd: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/empty: [32m1.OK [32m2.OK [0m
+[37mfiles/nl: [32m1.OK [32m2.OK [0m
+[37mfiles/41_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/41_with_nl: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/42_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/42_with_nl: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/43_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/43_with_nl: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/multiple_nlx5: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [0m
+[37mfiles/multiple_line_no_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [0m
+[37mfiles/multiple_line_with_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [0m
+[37mfiles/alternate_line_nl_no_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK [0m
+[37mfiles/alternate_line_nl_with_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK [0m
+[37mfiles/big_line_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/big_line_with_nl: [32m1.OK [32m2.OK [0m
+[37mstdin: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK 
+==1528== error calling PR_SET_PTRACER, vgdb might block
+[37m[BUFFER_SIZE = 10000000]: [0m
+[37mInvalid fd: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/empty: [32m1.OK [32m2.OK [0m
+[37mfiles/nl: [32m1.OK [32m2.OK [0m
+[37mfiles/41_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/41_with_nl: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/42_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/42_with_nl: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/43_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/43_with_nl: [32m1.OK [32m2.OK [32m3.OK [0m
+[37mfiles/multiple_nlx5: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [0m
+[37mfiles/multiple_line_no_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [0m
+[37mfiles/multiple_line_with_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [0m
+[37mfiles/alternate_line_nl_no_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK [0m
+[37mfiles/alternate_line_nl_with_nl: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK [0m
+[37mfiles/big_line_no_nl: [32m1.OK [32m2.OK [0m
+[37mfiles/big_line_with_nl: [32m1.OK [32m2.OK [0m
+[37mstdin: [32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK 
+[33m[Static = cat: '../*bonus.c': No such file or directory
+0]
+[35m[Bonus]
+[01m[Kcc1:[m[K [01;31m[Kfatal error: [m[K../get_next_line_bonus.c: No such file or directory
+compilation terminated.
+[01m[Kcc1:[m[K [01;31m[Kfatal error: [m[K../get_next_line_utils_bonus.c: No such file or directory
+compilation terminated.
+make: *** [Makefile:62: m1bonus] Error 1
+
+Script done on 2025-03-12 01:21:52-03:00 [COMMAND_EXIT_CODE="2"]
